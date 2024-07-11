@@ -1,0 +1,5 @@
+mixin select_role()
+    select(name="role_id" id="" class="select-form")
+        if role
+            each item in role
+                option(value=item._id)= item.name_role

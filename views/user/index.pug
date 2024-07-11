@@ -1,0 +1,65 @@
+extends ../layout/layout.pug
+
+include ../../mixin/search-filter.pug
+include ../../mixin/button-add.pug
+
+block admin
+    .container-main
+        .dashoard-top-fill
+            .filter 
+                +search-filter("keyword","Tìm người dùng")
+
+        table.table-admin 
+            thead.table-head
+                tr 
+                    th(scope="col")
+                        input(type="checkbox" name="")   
+                    th.text-table-head(scope="col") Id
+                    th.text-table-head(scope="col") Họ tên
+                    th.text-table-head(scope="col") Email
+                    th.text-table-head(scope="col") Nhóm quyền
+                    
+                    th.text-table-head(scope="col") Trạng thái 
+                    th.text-table-head(scope="col") Hành động
+            tbody 
+                each item, index in user
+                    tr 
+                        th(scope="row") 
+                            input(type="checkbox" name="")
+                        th.text-table-body(scope="row") #{item._id}
+                        th.text-table-body(scope="row") #{item.fullname}
+                        th.text-table-body(scope="row") #{item.email}
+                        th.text-table-body(scope="row") #{item.name_role}
+
+                        
+                        
+                        th.text-table-body(scope="row") 
+                            input.toggle-check(type="checkbox" name="")
+                        th.text-table-body(scope="row")
+                            .action-button
+                                button.detail-btn Chi tiết                            
+                                button.edit-btn 
+                                    a(href=`/admin/user/edit/${item._id}`) Sửa    
+                                button#delete-btn.btn-delete(data-id=item._id) Xóa
+        .form-abcde
+            form#form-status(data-path='/admin/product' method='POST')
+            form#form-delete(data-path='/admin/user/delete' method='POST')
+    script(src="/js/app.js")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

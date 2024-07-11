@@ -1,0 +1,39 @@
+doctype html
+html(lang="en")
+    head
+        link(rel="stylesheet" href="/css/page.css")
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        title Document
+    body 
+        
+        h1.text-send 
+
+        a.link-dashboard(href="/dashboard") Dashboard
+        script(src='https://kit.fontawesome.com/0bcc6600f3.js' crossorigin='anonymous')
+        script(src="https://cdn.tailwindcss.com")
+        script.
+            tailwind.config = {
+                darkMode:"class",
+                theme: {
+                    extend: {
+                        
+                    }
+                }   
+            }
+        script.
+            const textSend = document.querySelector('.text-send');
+            const currentTime = new Date();
+            const hours = currentTime.getHours();
+
+            if (hours >= 0 && hours < 11) {
+                textSend.textContent = "Chào buổi sáng";
+            } else if (hours >= 11 && hours < 13) {
+                textSend.textContent = "Chào buổi trưa";
+            } else if (hours >= 13 && hours < 18) {
+                textSend.textContent = "Chào buổi chiều";
+            } else if (hours >= 18 && hours < 22) {
+                textSend.textContent = "Chào buổi tối";
+            } else {
+                textSend.textContent = "Chào buổi đêm";
+            }

@@ -1,0 +1,24 @@
+extends ../layout/layout.pug
+
+include ../../mixin/title-admin.pug
+include ../../mixin/input-form.pug
+include ../../mixin/form-select.pug
+include ../../mixin/select-image.pug
+include ../../mixin/category.pug
+
+
+block admin
+    .container-main
+        .form-add 
+            +title-admin("Thêm quyền")
+            form(action="/admin/role/add" autocomplete="off" method="POST")
+                .form-group 
+                    label.label-input Tên quyền
+                    +input-form("text","name_role","Tên quyền") 
+                .form-group 
+                    label.label-input Mô tả 
+                    +input-form("text","description","Mô tả...")
+      
+                    
+                button.btn-submit(type="submit")  Tạo
+                

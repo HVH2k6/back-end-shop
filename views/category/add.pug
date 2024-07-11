@@ -1,0 +1,28 @@
+extends ../layout/layout.pug
+
+include ../../mixin/title-admin.pug
+include ../../mixin/input-form.pug
+include ../../mixin/form-select.pug
+include ../../mixin/select-image.pug
+include ../../mixin/category.pug
+
+
+
+block admin
+    .container-main
+        .form-add 
+            +title-admin("Thêm danh mục")
+            form(action="/admin/category/add" autocomplete="off" method="POST")
+                .form-group 
+                    label.label-input Tên danh mục 
+                    +input-form("text","name_category","Tên danh mục") 
+                .form-group 
+                    label.label-input Icon
+                    +input-form("text","icon","Icon") 
+                .form-group 
+                    label.label-input Danh mục cha
+                    select(name="parent_id" class="select-form") 
+                        option(value="" disabled selected) --Danh mục --
+                            if (categories)
+                                +select-tree(categories, 1)           
+                button.btn-submit(type="submit")  Tạo

@@ -1,0 +1,17 @@
+extends layout/layout.pug
+include ../mixin/card-dashboard.pug
+block admin
+    .container-main 
+        h1.dashboard-title(class="dark:text-blue-500") Thống kê
+        
+        .dashboard-content
+            .dashboard-card
+                +card-dashboard("Sản phẩm", 5)
+            .dashboard-card
+                +card-dashboard("Người dùng", 5)
+            .dashboard-card
+                +card-dashboard("Chủ đề", 5)
+            .dashboard-card
+                +card-dashboard("Quyền", 5)
+
+

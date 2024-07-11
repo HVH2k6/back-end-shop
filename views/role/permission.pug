@@ -1,0 +1,88 @@
+extends ../layout/layout.pug
+
+block admin
+  .container-main
+    if relust
+      div.json-data(data-relust=JSON.stringify(relust))
+    
+    table.table.table-hover.table-sm(id="table")
+      thead
+        tr
+          th Quyền
+          each role in relust
+            th.text-center(data-role-id=role._id)
+              | #{role.name_role}
+              br
+              button.btn.btn-sm.btn-secondary.check-all(type="button", data-role-id=role._id) Check All
+      tbody
+        tr.d-none(data-name="id")
+          td
+          each role in relust
+            td.text-center
+              input.input-data(type="text", value=role._id)
+        tr
+          td(colspan="4")
+            strong Các quyền
+        tr
+          td(colspan="4")
+            strong Sản phẩm
+        tr(data-name="add-product")
+          td Thêm
+          each item in relust
+            td.text-center
+              input.togole-check(type="checkbox", data-role-id=item._id, data-permission="add-product")
+        tr(data-name="edit-product")
+          td Sửa
+          each item in relust
+            td.text-center
+              input.togole-check(type="checkbox", data-role-id=item._id, data-permission="edit-product")
+        tr(data-name="delete-product")
+          td Xóa
+          each item in relust
+            td.text-center
+              input.togole-check(type="checkbox", data-role-id=item._id, data-permission="delete-product")
+        tr
+          td(colspan="4")
+            strong Danh mục
+        tr(data-name="add-catgory")
+          td Thêm
+          each item in relust
+            td.text-center
+              input.togole-check(type="checkbox", data-role-id=item._id, data-permission="add-catgory")
+        tr(data-name="edit-catgory")
+          td Sửa
+          each item in relust
+            td.text-center
+              input.togole-check(type="checkbox", data-role-id=item._id, data-permission="edit-catgory")
+        tr(data-name="delete-catgory")
+          td Xóa
+          each item in relust
+            td.text-center
+              input.togole-check(type="checkbox", data-role-id=item._id, data-permission="delete-catgory")
+        tr
+          td(colspan="4")
+            strong Tài khoản
+        tr(data-name="add-auth")
+          td Thêm
+          each item in relust
+            td.text-center
+              input.togole-check(type="checkbox", data-role-id=item._id, data-permission="add-auth")
+        tr(data-name="edit-auth")
+          td Sửa
+          each item in relust
+            td.text-center
+              input.togole-check(type="checkbox", data-role-id=item._id, data-permission="edit-auth")
+        tr(data-name="delete-auth")
+          td Xóa
+          each item in relust
+            td.text-center
+              input.togole-check(type="checkbox", data-role-id=item._id, data-permission="delete-auth")
+  .mt-3
+    button#btn-submit.btn.btn-primary(type="submit") Cập nhật
+
+  form#form-permission(action="/admin/role/permission", method="POST")
+    .d-none
+      input(type="text", name="permission")
+
+  script(src="/js/role.js")
+  

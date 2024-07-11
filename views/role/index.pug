@@ -1,0 +1,63 @@
+extends ../layout/layout.pug
+
+include ../../mixin/search-filter.pug
+include ../../mixin/button-add.pug
+
+block admin
+    .container-main
+        .dashoard-top-fill
+            .filter 
+                +search-filter("keyword","Tìm người dùng")
+            .flex.items-center.gap-x-5 
+                +button-add("/admin/role/add","Thêm quyền")
+                +button-add("/admin/role/permission","Phân quyền")   
+
+        table.table-admin 
+            thead.table-head
+                tr 
+                    th(scope="col")
+                        input(type="checkbox" name="")   
+
+                    th.text-table-head(scope="col") Tên quyền
+                    th.text-table-head(scope="col") Mô tả
+
+                    th.text-table-head(scope="col") Trạng thái 
+                    th.text-table-head(scope="col") Hành động
+            tbody 
+                each item, index in roles
+                    tr 
+                        th(scope="row") 
+                            input(type="checkbox" name="")
+
+                        th.text-table-body(scope="row") #{item.name_role}
+                        th.text-table-body(scope="row") #{item.description}
+                        th.text-table-body(scope="row") 
+                            input.toggle-check(type="checkbox" name="")
+                        th.text-table-body(scope="row")
+                            .action-button
+                                button.detail-btn Chi tiết                            
+                                button.edit-btn 
+                                    a(href=`/admin/role/edit/${item._id}`) Sửa    
+                                button#delete-btn.btn-delete(data-id=item._id) Xóa
+        .form-abcde
+            form#form-status(data-path='/admin/product' method='POST')
+            form#form-delete(data-path='/admin/user/delete' method='POST')
+    script(src="/js/app.js")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

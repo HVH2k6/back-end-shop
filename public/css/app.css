@@ -1,0 +1,36 @@
+
+.container-main{
+    margin: 60px 40px;
+}
+.dashoard-top-fill{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.button-add{
+    padding: 16px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    color: #fff;
+    background-color:#2563EB;
+}
+#theme{
+    background-color:#2563EB;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+.icon-theme{
+    font-size: 24px;
+    padding: 10px;
+    color: #fff;
+  
+    
+}
+.alert.hidden{
+    transform: translateX(120%);
+    transition: all 1.5s ease;
+}

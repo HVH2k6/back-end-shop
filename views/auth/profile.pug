@@ -1,0 +1,38 @@
+include ../../mixin/input-form.pug
+include ../../mixin/title-admin.pug
+include ../../mixin/select-image.pug        
+
+doctype html
+html(lang="en")
+    head
+        link(rel='stylesheet', href='/css/reset.css')
+        link(rel='stylesheet', href='/css/app.css')
+        link(rel='stylesheet', href='/css/layout.css')
+        link(rel='stylesheet', href='/css/page.css')
+        link(rel='stylesheet', href='/css/components.css')
+
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Document
+    body 
+    .form-add
+        +title-admin("Chỉnh sửa thông tin")
+        form(action="/auth/login" method="POST" autocomplete="off")
+            .form-group 
+                    label.label-input Họ tên
+                    +input-form("text","fullname","Họ tên..." , data.fullname)
+            .form-group 
+                    label.label-input Email
+                    +input-form("email","email","Email...", data.email)
+            .form-group 
+                    label.label-input Sđt
+                    +input-form("tel","phone_number","Số điện thoại...", data.phone_number)
+            .form-group 
+                    label.label-input Mô tả ngắn
+                    +input-form("text","description","Mô tả...", data.description)
+            .form-group 
+                    label.label-input Ảnh đại diện
+                    +select-image("avatar")
+            button.btn-submit(type="submit")  Cập nhật
+
+    

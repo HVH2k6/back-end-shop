@@ -1,0 +1,63 @@
+extends ../layout/layout.pug
+
+include ../../mixin/search-filter.pug
+include ../../mixin/button-add.pug
+
+block admin
+    .container-main
+        .dashoard-top-fill
+            .filter 
+                +search-filter("keyword","Tìm sản phẩm")
+            form(action="" autocomplete="off") 
+                +button-add("/admin/category/add","Thêm danh mục mới")
+        table.table-admin 
+            thead.table-head
+                tr 
+                    th(scope="col")
+                        input(type="checkbox" name="")   
+                    th.text-table-head(scope="col") Stt
+                    th.text-table-head(scope="col") Tên danh mục
+                    th.text-table-head(scope="col") Danh mục con
+                    
+                    th.text-table-head(scope="col") Trạng thái 
+                    th.text-table-head(scope="col") Hành động
+            tbody 
+                each item, index in categories
+                    tr 
+                        th(scope="row") 
+                            input(type="checkbox" name="")
+                        th.text-table-body(scope="row") #{index + 1}
+                        th.text-table-body(scope="row") #{item.name_category}
+                        th.text-table-body(scope="row") Abc
+                        
+                        
+                        th.text-table-body(scope="row") 
+                            input.toggle-check(type="checkbox" name="")
+                        th.text-table-body(scope="row")
+                            .action-button
+                                button.detail-btn Chi tiết                            
+                                button.edit-btn 
+                                    a(href=`/admin/category/edit/${item._id}`) Sửa    
+                                button#delete-btn.btn-delete(data-id=item._id) Xóa
+        .form-abcde
+            form#form-status(data-path='/admin/product' method='POST')
+            form#form-delete(data-path='/admin/category/delete' method='POST')
+    script(src="/js/app.js")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

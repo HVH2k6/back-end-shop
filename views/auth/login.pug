@@ -1,0 +1,18 @@
+extends ../layout/auth-layout.pug
+include ../../mixin/input-form.pug
+include ../../mixin/title-admin.pug
+block auth 
+    .form-add
+        +title-admin("Đăng nhập")
+        form(action="/auth/login" method="POST" autocomplete="off")
+            .form-group 
+                    label.label-input Email
+                    +input-form("email","email","Email...")
+            .form-group 
+                    label.label-input Mật khẩu
+                    +input-form("password","password","Mật khẩu...")
+            .form-group.link-group
+                a.link-register(href="register") Đăng kí
+                a.link-forgot(href="forgot-password") Quên mật khẩu
+
+            button.btn-submit(type="submit")  Tạo

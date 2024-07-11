@@ -1,0 +1,19 @@
+extends ../layout/layout.pug
+
+include ../../mixin/title-admin.pug
+include ../../mixin/input-form.pug
+include ../../mixin/select-role.pug
+
+
+block admin
+    .container-main
+        .form-add 
+            +title-admin("Sửa người dùng")
+            form(action=`/admin/user/edit/${user._id}` autocomplete="off" method="POST")
+                span Nhóm quyền hiện tại #{user.name_role}
+                .form-group 
+                    label.label-input Nhóm quyền 
+                    +select_role
+                
+                button.btn-submit(type="submit")  Tạo
+                

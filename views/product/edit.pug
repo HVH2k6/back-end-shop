@@ -1,0 +1,43 @@
+extends ../layout/layout.pug
+
+include ../../mixin/title-admin.pug
+include ../../mixin/input-form.pug
+include ../../mixin/form-select.pug
+include ../../mixin/select-image.pug
+include ../../mixin/category.pug
+
+
+block admin
+    .container-main
+        .form-add 
+            +title-admin("Thêm sản phẩm")
+            form(action=`/admin/product/edit/${product._id}` autocomplete="off" method="POST" enctype='multipart/form-data')
+                .form-group 
+                    label.label-input Tên sản phẩm 
+                    +input-form("text","name","Tên sản phẩm",product.name) 
+                .form-group 
+                    label.label-input Giá 
+                    +input-form("number","price","Giá sản phẩm",product.price)
+                .form-group 
+                    label.label-input Giảm giá 
+                    +input-form("number","sale","Giảm giá",product.sale)
+                .form-group 
+                    label.label-input Số lượng 
+                    +input-form("number","quantity","Số lượng",product.quantity)
+                .form-group 
+                    label.label-input Hãng 
+                    +select-form("brand",brand,product.brand)
+                .form-group 
+                    label.label-input Phân loại 
+                    .form-group 
+                    label.label-input Danh mục cha
+                    select(name="product_category" class="select-form") 
+                        option(value=""  ) --Danh mục --
+                           if (categories)
+                            +select-tree(categories, 1,product.product_category) 
+                .form-group 
+                    label.label-input Ảnh sản phẩm 
+                    +select-image("image")
+                    
+                button.btn-submit(type="submit")  Tạo
+                

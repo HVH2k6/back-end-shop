@@ -1,0 +1,4 @@
+mixin select-form(name,nameData,checkSelected)
+    select.select-form(name=`${name}` )
+        each item, index in nameData
+            option.option-form(value=item.title key=index selected=(item.title == checkSelected))  #{item.title}

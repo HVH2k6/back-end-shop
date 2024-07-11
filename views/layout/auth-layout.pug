@@ -1,0 +1,30 @@
+include ../../mixin/message.pug
+doctype html
+html(lang="en")
+    head
+        link(rel='stylesheet', href='/css/reset.css')
+        link(rel='stylesheet', href='/css/app.css')
+        link(rel='stylesheet', href='/css/layout.css')
+        link(rel='stylesheet', href='/css/page.css')
+        link(rel='stylesheet', href='/css/components.css')
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+
+        title Document
+    body
+    .auth-page
+
+        +message_alert()
+        block auth 
+    script(src='https://kit.fontawesome.com/0bcc6600f3.js', crossorigin='anonymous')
+    script(src="https://cdn.tailwindcss.com")
+    script.
+      tailwind.config = {
+        darkMode:"class",
+        theme: {
+          extend: {
+            
+          }
+        }
+      }
+    script(src="/js/app.js") 

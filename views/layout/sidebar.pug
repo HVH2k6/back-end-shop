@@ -1,0 +1,17 @@
+include ../../mixin/item-sidebar.pug
+.sidebar
+  .sidebar-logo
+    img.logo-image(src='/logohvh.png', alt='')
+    h3.sidebar-title HVH
+  .sidebar-menu
+    +item-sidebar("/",'<i class="fa-solid fa-database"></i>',"Trang tổng quan")
+    +item-sidebar("/admin/product", '<i class="fa-solid fa-cart-shopping"></i>', "Sản phẩm")
+    +item-sidebar("/admin/user", '<i class="fa-solid fa-user"></i>', "Người dùng")
+    +item-sidebar("/admin/category", '<i class="fa-solid fa-layer-group"></i>', "Phân loại")
+    +item-sidebar("/admin/role", '<i class="fa-solid fa-users"></i>', "Nhóm quyền")
+    .sidebar-bottom
+      .item-bottom
+        i.fa-solid.fa-gear
+        span Ca&#x300;i &dstrok;a&#x323;&#x306;t
+      .item-bottom#theme
+        i(class="icon-theme fa-solid fa-moon")        

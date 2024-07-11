@@ -1,0 +1,9 @@
+mixin message_alert()
+    if (messages.success)
+        div(class="w-80 min-h-12 shadow-md rounded-md flex items-center p-2 absolute right-0 top-0 bg-white alert") 
+            i(class="fa-solid fa-circle-check text-green-500 text-2xl ")
+            span(class="font-medium inline-block ml-8") #{messages.success}
+    if (messages.error)
+        div(class="w-80 min-h-12 shadow-md rounded-md flex items-center p-2 absolute right-0 top-0 bg-white alert") 
+            i(class="fa-solid fa-circle-exclamation text-red-500")
+            span(class="font-medium inline-block ml-8") #{messages.error}
