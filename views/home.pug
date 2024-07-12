@@ -8,19 +8,12 @@ html(lang="en")
     body 
         
         h1.text-send 
-
+        
         a.link-dashboard(href="/dashboard") Dashboard
+        
+        
         script(src='https://kit.fontawesome.com/0bcc6600f3.js' crossorigin='anonymous')
-        script(src="https://cdn.tailwindcss.com")
-        script.
-            tailwind.config = {
-                darkMode:"class",
-                theme: {
-                    extend: {
-                        
-                    }
-                }   
-            }
+        
         script.
             const textSend = document.querySelector('.text-send');
             const currentTime = new Date();

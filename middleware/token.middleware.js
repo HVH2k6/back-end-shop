@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const Auth = require('../module/auth-module');
+const Role = require('../module/role-module');
 const accessToken = (payload) => {
   const access_token = jwt.sign({ payload }, 'access_token', {
     expiresIn: '1d',
@@ -30,10 +31,14 @@ const verifyToken = (req, res, next) => {
     req.user = payload.payload;
 
     const dataUser = await Auth.findOne({ _id: req.user });
+    const role = await Role.findOne({ _id: dataUser.role_id });
+
+    global.roleUser = role
     global.dataUser = dataUser;
     next();
   });
 };
+
 const checkTokenClient = (req, res, next) => {
   if (req.headers.authorization) {
     const token = req.headers.authorization.split(' ')[1];

@@ -18,6 +18,19 @@ const permission = async (req, res) => {
     const roleList = await Role.find();
     res.render("role/permission",{ relust: roleList });
 }
+const edit = async (req, res) => {
+    const id = req.params.id;
+    const role = await Role.findOne({ _id: id });
+    res.render("role/edit", { role: role });
+}
+
+const update = async (req, res) => {
+    const id = req.params.id;
+    const data = req.body;
+    
+    await Role.findOneAndUpdate({ _id: id }, data);
+    res.redirect("/admin/role");
+}
 const createPermission = async (req, res) => {
     const permission = JSON.parse(req.body.permission);
   
@@ -26,4 +39,4 @@ const createPermission = async (req, res) => {
     }
     res.redirect('/');
   };
-module.exports = { index, create, createRole, permission, createPermission }
+module.exports = { index, create, createRole, permission, createPermission, edit, update }

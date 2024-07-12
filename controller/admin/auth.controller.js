@@ -40,4 +40,8 @@ const profile = async (req, res) => {
   res.render('auth/profile', { data });
 };
 
-module.exports = { login, loginAuth, register, registerAuth, profile };
+const logout = (req, res) => {
+  res.clearCookie('token');
+  res.redirect('/');
+}
+module.exports = { login, loginAuth, register, registerAuth, profile, logout };

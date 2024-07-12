@@ -13,22 +13,17 @@ html(lang='en')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     title Document
   body
-    .layout-main
-      include ./sidebar.pug
-      div.main-content
-        include ./header.pug
-        +message_alert()
-        block admin
+    if roleUser
+      .layout-main
+        include ./sidebar.pug
+        div.main-content
+          include ./header.pug
+          +message_alert()
+          block admin
+    else  
+      include ../not-found.pug
 
     script(src='https://kit.fontawesome.com/0bcc6600f3.js', crossorigin='anonymous')
-    script(src="https://cdn.tailwindcss.com")
-    script.
-      tailwind.config = {
-        darkMode:"class",
-        theme: {
-          extend: {
-            
-          }
-        }
-      }
+    script(type="application/javascript" src= "/tinymce/tinymce.min.js")
+    script(src="/js/my-tinymce-config.js")
     script(src="/js/app.js") 

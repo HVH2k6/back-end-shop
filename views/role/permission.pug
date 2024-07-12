@@ -23,6 +23,11 @@ block admin
         tr
           td(colspan="4")
             strong Các quyền
+        tr(data-name="all") 
+          td All quyền
+          each item in relust
+            td.text-center
+              input.togole-check(type="checkbox", data-role-id=item._id, data-permission="all")
         tr
           td(colspan="4")
             strong Sản phẩm
@@ -77,6 +82,29 @@ block admin
           each item in relust
             td.text-center
               input.togole-check(type="checkbox", data-role-id=item._id, data-permission="delete-auth")
+        tr
+          td(colspan="4")
+            strong Phân quyền
+        tr(data-name="add-role")
+          td Thêm
+          each item in relust
+            td.text-center
+              input.togole-check(type="checkbox", data-role-id=item._id, data-permission="add-role")
+        tr(data-name="edit-role")
+          td Sửa
+          each item in relust
+            td.text-center
+              input.togole-check(type="checkbox", data-role-id=item._id, data-permission="edit-role")
+        tr(data-name="delete-role")
+          td Xóa
+          each item in relust
+            td.text-center
+              input.togole-check(type="checkbox", data-role-id=item._id, data-permission="delete-role")
+        tr(data-name="permission-role")
+          td Phân quyền
+          each item in relust
+            td.text-center
+              input.togole-check(type="checkbox", data-role-id=item._id, data-permission="permission-role")
   .mt-3
     button#btn-submit.btn.btn-primary(type="submit") Cập nhật
 

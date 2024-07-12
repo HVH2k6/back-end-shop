@@ -28,4 +28,5 @@ const createAuthValidate = async (req, res, next) => {
 
 module.exports = {
   createAuthValidate,
+
 };
